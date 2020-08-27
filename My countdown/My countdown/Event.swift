@@ -190,4 +190,50 @@ class EventManager {
         
         return stringDate
     }
+    
+    // Function to get days between 2 dates
+    func daysBetween(start: Date, end: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: start, to: end).day!
+    }
+    
+    // Function to sort Events in order of days left till events
+    // if daysLeft >= 0, order from small to large
+    // if daysLeft < 0, order from large to small
+    // negative days are ordered after positive
+    func sort(unorderedEvents: [Event]) -> [Event]{
+        
+        // create array of tuple of events and daysleft
+        var eventTupList: [(event: Event, daysLeft: Int)] = []
+        for event in unorderedEvents {
+            let tempTup = (event, daysBetween(start: currentDate, end: event.date))
+            eventTupList.append(tempTup)
+        }
+        
+        // order array by daysLeft
+        eventTupList.sort(by: {$0.1 < $1.1})
+    
+        
+        // array for ordered Events
+        var orderedEvents: [Event] = []
+        
+        // array for events with negative days left
+        var negativeEventsTup: [(event: Event, daysLeft: Int)] = []
+        
+        for tup in eventTupList {
+            // append of daysLeft is positive or 0, ie. event has not happened
+            if tup.1 >= 0 {
+                orderedEvents.append(tup.0)
+            }
+            else {
+                negativeEventsTup.append(tup)
+            }
+        }
+        
+        negativeEventsTup.sort(by: {$0.1 > $1.1})
+        for tup in negativeEventsTup {
+            orderedEvents.append(tup.0)
+        }
+        
+        return orderedEvents
+    }
 }

@@ -134,7 +134,7 @@ class TableViewController: UITableViewController {
     
     // Function to reload table
     func reload() {
-        events = EventManager.main.getAllEvents()
+        events = EventManager.main.sort(unorderedEvents: EventManager.main.getAllEvents())
         self.tableView.reloadData()
     }
     
