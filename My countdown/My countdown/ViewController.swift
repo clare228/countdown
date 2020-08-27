@@ -31,7 +31,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(event.description)
         titleTextView.text = event.title
         descriptionTextView.text = event.description
         datePicker.date = event.date

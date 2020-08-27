@@ -51,7 +51,26 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         reload()
+        
+        // set background colour of table view
+        self.tableView.backgroundColor = UIColor.white
+        
     }
+    /*
+    // change colour of table cell according to days left
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let daysLeft = daysBetween(start: currentDate, end: events[indexPath.row].date)
+        
+        if daysLeft == 0 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 175/255, green: 220/255, blue: 223/255, alpha: 1)
+        }
+        else if daysLeft > 0 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 182/255, green: 207/255, blue: 236/255, alpha: 1)
+        }
+        else if daysLeft < 0 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        }
+    }*/
     
     // reload when return to table from note
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +99,19 @@ class TableViewController: UITableViewController {
         cell.dayLabel?.text = String(daysBetween(start: currentDate, end: event.date))
         cell.daysLeftLabel?.text = "days left"
         
+        // Change background colour of table view cell according to number of days left
+        let daysLeft = daysBetween(start: currentDate, end: events[indexPath.row].date)
+        
+        if daysLeft == 0 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 175/255, green: 220/255, blue: 223/255, alpha: 1)
+        }
+        else if daysLeft > 0 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 182/255, green: 207/255, blue: 236/255, alpha: 1)
+        }
+        else if daysLeft < 0 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+        }
+                
         return cell
     }
     
