@@ -12,6 +12,7 @@ import SQLite3
 struct Event {
     let id: Int
     var title: String
+    var description: String
     var date: Date
 }
 
@@ -46,7 +47,7 @@ class EventManager {
             }
             
             // create table
-            if sqlite3_exec(database, "CREATE TABLE IF NOT EXISTS events (title TEXT, date TEXT)", nil, nil, nil) != SQLITE_OK {
+            if sqlite3_exec(database, "CREATE TABLE IF NOT EXISTS events (title TEXT, description TEXT, date TEXT)", nil, nil, nil) != SQLITE_OK {
                 print("Could not create table")
             }
         }
@@ -63,7 +64,7 @@ class EventManager {
         
         // prepare statment
         var statement: OpaquePointer!
-        if sqlite3_prepare_v2(database, "INSERT INTO events (title, date) VALUES ('New event', ?)", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(database, "INSERT INTO events (title, description, date) VALUES ('New event', 'Event description', ?)", -1, &statement, nil) != SQLITE_OK {
             print("Could not create (insert) query")
             return -1
         }
@@ -92,7 +93,7 @@ class EventManager {
         
         // prepare
         var statement: OpaquePointer!
-        if sqlite3_prepare_v2(database, "SELECT rowid, title, date FROM events", -1, &statement, nil) != SQLITE_OK{
+        if sqlite3_prepare_v2(database, "SELECT rowid, title, description, date FROM events", -1, &statement, nil) != SQLITE_OK{
             print("Could not create (select) query")
             return []
         }
@@ -101,10 +102,10 @@ class EventManager {
         while sqlite3_step(statement) == SQLITE_ROW {
             
             // change string date into Date date
-            let Date_date = stringToDateFormat(stringDate: String(cString: sqlite3_column_text(statement, 2)))
+            let Date_date = stringToDateFormat(stringDate: String(cString: sqlite3_column_text(statement, 3)))
 
             // append Events to result
-            result.append(Event(id: Int(sqlite3_column_int(statement, 0)), title: String(cString: sqlite3_column_text(statement, 1)), date: Date_date))
+            result.append(Event(id: Int(sqlite3_column_int(statement, 0)), title: String(cString: sqlite3_column_text(statement, 1)), description: String(cString: sqlite3_column_text(statement, 2)), date: Date_date))
         }
         
         // finalise
@@ -121,14 +122,15 @@ class EventManager {
         
         // prepare
         var statement: OpaquePointer!
-        if sqlite3_prepare_v2(database, "UPDATE events SET title = ?, date = ? WHERE rowid = ?", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(database, "UPDATE events SET title = ?, date = ?, description = ? WHERE rowid = ?", -1, &statement, nil) != SQLITE_OK {
             print("Could not create (update) query")
         }
         
         // bind place holders
         sqlite3_bind_text(statement, 1, NSString(string:event.title).utf8String, -1, nil)
         sqlite3_bind_text(statement, 2, NSString(string:dateToStringFormat(dateDate: event.date)).utf8String, -1, nil)
-        sqlite3_bind_int(statement, 3, Int32(event.id))
+        sqlite3_bind_text(statement, 3, NSString(string:event.description).utf8String, -1, nil)
+        sqlite3_bind_int(statement, 4, Int32(event.id))
         
         // execute
         if sqlite3_step(statement) != SQLITE_DONE {
@@ -183,6 +185,7 @@ class EventManager {
     func dateToStringShow(dateDate: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
+        formatter.timeStyle = .short
         let stringDate = formatter.string(from: dateDate)
         
         return stringDate

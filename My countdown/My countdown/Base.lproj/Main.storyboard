@@ -15,32 +15,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="K1w-at-27q">
-                                <rect key="frame" x="0.0" y="317" width="414" height="262"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="fz1-JF-9Bi"/>
-                                    <constraint firstAttribute="height" constant="262" id="i8H-Gs-69f"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="262" id="woU-DM-cbC"/>
-                                </constraints>
-                            </datePicker>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Event title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pqq-K6-vad">
-                                <rect key="frame" x="20" y="204" width="374" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="VBl-ac-v3V"/>
-                                </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-1F-hnm">
+                                <rect key="frame" x="20" y="237" width="374" height="422"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Event title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pqq-K6-vad">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Mid-vh-6lz"/>
+                                            <constraint firstAttribute="width" constant="374" id="suu-4J-VH7"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Event description" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aPD-qt-eHE">
+                                        <rect key="frame" x="0.0" y="103" width="374" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="374" id="2K2-mj-dhT"/>
+                                            <constraint firstAttribute="height" constant="60" id="wuB-JY-gcy"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="K1w-at-27q">
+                                        <rect key="frame" x="0.0" y="206" width="374" height="216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="216" id="PZW-VP-vOh"/>
+                                            <constraint firstAttribute="width" constant="374" id="xd3-Aw-4Y7"/>
+                                        </constraints>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="K1w-at-27q" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1Yf-2j-Sgq"/>
-                            <constraint firstItem="Pqq-K6-vad" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="116" id="7XC-42-nNf"/>
-                            <constraint firstItem="K1w-at-27q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VBg-Od-QOw"/>
-                            <constraint firstItem="Pqq-K6-vad" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gNS-e8-iXn"/>
-                            <constraint firstItem="Pqq-K6-vad" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="w4i-W5-pqJ"/>
+                            <constraint firstItem="jcV-1F-hnm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gao-IE-hJd"/>
+                            <constraint firstItem="jcV-1F-hnm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MvL-Bj-Yit"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -53,6 +66,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="K1w-at-27q" id="we1-pa-PqE"/>
+                        <outlet property="descriptionTextView" destination="aPD-qt-eHE" id="lgQ-4n-8dv"/>
                         <outlet property="titleTextView" destination="Pqq-K6-vad" id="rBK-NI-XPu"/>
                     </connections>
                 </viewController>

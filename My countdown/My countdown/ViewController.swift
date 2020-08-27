@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     // title text view
     @IBOutlet var titleTextView: UITextView!
     
+    // Event description text view
+    @IBOutlet var descriptionTextView: UITextView!
+    
     // delete button
     @IBAction func deleteEvent(_ sender: Any) {
         // delete from db
@@ -28,7 +31,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(event.description)
         titleTextView.text = event.title
+        descriptionTextView.text = event.description
         datePicker.date = event.date
     }
     
@@ -36,6 +41,7 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         event.title = titleTextView.text
+        event.description = descriptionTextView.text
         event.date = datePicker.date
         
         EventManager.main.save(event:event)
