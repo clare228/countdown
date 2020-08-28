@@ -9,6 +9,7 @@ Main features
 - Event sorted according to days left till the event
 - Colour of cells in table view differ according to days left (green if event that is happening on the day, blue for upcoming events, grey for past events)
 - swipe delete events or delete on editing page with pop up window asking for delete confirmation
+- message for if table cell view is empty
 
 
 What I have learnt in this project:
