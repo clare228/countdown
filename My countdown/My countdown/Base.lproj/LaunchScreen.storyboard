@@ -14,7 +14,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Countdown icon" translatesAutoresizingMaskIntoConstraints="NO" id="2Te-kn-CHN">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.59240061044692993" green="0.53679889440536499" blue="0.7411077618598938" alpha="0.9993896484375" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Te-kn-CHN" secondAttribute="trailing" constant="57" id="K5o-Iy-tkc"/>
+                            <constraint firstItem="2Te-kn-CHN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="57" id="cCq-m1-JGK"/>
+                            <constraint firstItem="2Te-kn-CHN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="254" id="dSf-dr-YB7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Te-kn-CHN" secondAttribute="bottom" constant="264" id="goI-Bf-t5S"/>
+                            <constraint firstItem="2Te-kn-CHN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qfW-It-Yb9"/>
+                            <constraint firstItem="2Te-kn-CHN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vGh-gK-UaH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -23,4 +36,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Countdown icon" width="1024" height="1024"/>
+    </resources>
 </document>
