@@ -35,19 +35,10 @@ class TableViewController: UITableViewController {
     
     @IBOutlet var swipeDelete: UISwipeGestureRecognizer!
     
-    // Delete swipe function
+    // swipe to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // delete from db
-            EventManager.main.delete(event: self.events[indexPath.row])
-            
-            // remove from array
-            self.events.remove(at: indexPath.row)
-            
-            // remove from table view
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            reload()
+            presentDeletionFailsafe(indexPath: indexPath)
         }
     }
     
@@ -143,6 +134,30 @@ class TableViewController: UITableViewController {
         else {
             eventsTableView.backgroundView = nil
         }
+    }
+    
+    // Function for delete confirmation pop up window
+    func presentDeletionFailsafe(indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Delete event", message: "Are you sure?", preferredStyle: .alert)
+
+        // yes action
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            
+            // remove event from db
+            EventManager.main.delete(event: self.events[indexPath.row])
+            
+            // remove event from array
+            self.events.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.reload()
+        }
+
+        alert.addAction(yesAction)
+
+        // cancel action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
     
 }

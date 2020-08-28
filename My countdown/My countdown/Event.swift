@@ -57,7 +57,7 @@ class EventManager {
     }
     
     
-    // Function to create new note
+    // Function to create new event
     // return row id of newly inserted row
     func create() -> Int {
         connect()

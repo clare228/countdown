@@ -21,9 +21,22 @@ class ViewController: UIViewController {
     
     // delete button
     @IBAction func deleteEvent(_ sender: Any) {
-        // delete from db
-        EventManager.main.delete(event: event)
-        dismissView()
+        let alert = UIAlertController(title: "Delete event", message: "Are you sure?", preferredStyle: .alert)
+
+        // yes action
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            // replace data variable with your own data array
+            // delete from db
+            EventManager.main.delete(event: self.event)
+            self.dismissView()
+        }
+
+        alert.addAction(yesAction)
+
+        // cancel action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
     
     // date picker
