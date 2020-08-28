@@ -20,7 +20,7 @@ What I have learnt in this project:
 - create pop up windows
 - customise each cell (e.g. colour, fonts, background) both in swift code or in storyboard
 - design my own app icon using figma
-- edit launch screen
+- insert a custom image and use it in the launch screen
 
 
 What I wish I have done but couldn't due to the lack of a developer account
