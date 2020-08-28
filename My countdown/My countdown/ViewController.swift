@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         EventManager.main.save(event:event)
     }
     
-    /* --------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     // Function to dismiss view
     func dismissView() {

@@ -164,7 +164,7 @@ class EventManager {
         sqlite3_finalize(statement)
     }
     
-    /* ----------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------------- */
     
     // Function to turn string date into Date date
     func stringToDateFormat(stringDate: String) -> Date {

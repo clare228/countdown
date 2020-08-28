@@ -28,6 +28,7 @@
 		1243DA6224F5641000AB8C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1243DA6824F5644C00AB8C2A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1243DA6A24F5646600AB8C2A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		1243DA6E24F95AF400AB8C2A /* My countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "My countdown.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		1243DA5324F5640F00AB8C2A /* My countdown */ = {
 			isa = PBXGroup;
 			children = (
+				1243DA6E24F95AF400AB8C2A /* My countdown.entitlements */,
 				1243DA5424F5640F00AB8C2A /* AppDelegate.swift */,
 				1243DA5624F5640F00AB8C2A /* SceneDelegate.swift */,
 				1243DA6824F5644C00AB8C2A /* TableViewController.swift */,
@@ -292,6 +294,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "My countdown/My countdown.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M68JF4G2G7;
 				INFOPLIST_FILE = "My countdown/Info.plist";
@@ -301,6 +305,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andreaclare228.My-countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -310,6 +315,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "My countdown/My countdown.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M68JF4G2G7;
 				INFOPLIST_FILE = "My countdown/Info.plist";
@@ -319,6 +326,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andreaclare228.My-countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

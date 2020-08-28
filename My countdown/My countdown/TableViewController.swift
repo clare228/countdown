@@ -21,6 +21,8 @@ class TableViewController: UITableViewController {
     
     var events: [Event] = []
     
+    @IBOutlet var eventsTableView: UITableView!
+    
     // today's date
     var currentDate = Date()
     
@@ -44,6 +46,8 @@ class TableViewController: UITableViewController {
             
             // remove from table view
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            reload()
         }
     }
     
@@ -53,24 +57,13 @@ class TableViewController: UITableViewController {
         reload()
         
         // set background colour of table view
-        self.tableView.backgroundColor = UIColor.white
+        self.tableView.backgroundColor = UIColor.init(displayP3Red: 234/255, green: 228/255, blue: 242/255, alpha: 1)
+        //self.tableView.backgroundColor = UIColor.white
+        
+        // add footer to hide separation lines of empty cells in table view
+        self.tableView.tableFooterView = UIView()
         
     }
-    /*
-    // change colour of table cell according to days left
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let daysLeft = daysBetween(start: currentDate, end: events[indexPath.row].date)
-        
-        if daysLeft == 0 {
-            cell.backgroundColor = UIColor.init(displayP3Red: 175/255, green: 220/255, blue: 223/255, alpha: 1)
-        }
-        else if daysLeft > 0 {
-            cell.backgroundColor = UIColor.init(displayP3Red: 182/255, green: 207/255, blue: 236/255, alpha: 1)
-        }
-        else if daysLeft < 0 {
-            cell.backgroundColor = UIColor.init(displayP3Red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
-        }
-    }*/
     
     // reload when return to table from note
     override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +118,7 @@ class TableViewController: UITableViewController {
         }
     }
     
-    
+/* ------------------------------------------------------------------------------------------- */
     
     // Function to get days between 2 dates
     func daysBetween(start: Date, end: Date) -> Int {
@@ -136,6 +129,21 @@ class TableViewController: UITableViewController {
     func reload() {
         events = EventManager.main.sort(unorderedEvents: EventManager.main.getAllEvents())
         self.tableView.reloadData()
+        
+        // display message if no events
+        if events.count == 0 {
+            eventsTableView.backgroundView = UIView()
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text = "Add an event!"
+            noDataLabel.textColor = UIColor.lightGray
+            noDataLabel.textAlignment = .center
+            noDataLabel.font = UIFont.boldSystemFont(ofSize: 30)
+            tableView.backgroundView = noDataLabel
+            tableView.separatorStyle = .none
+        }
+        else {
+            eventsTableView.backgroundView = nil
+        }
     }
     
 }
