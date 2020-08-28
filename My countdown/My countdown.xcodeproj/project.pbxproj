@@ -61,7 +61,6 @@
 		1243DA5324F5640F00AB8C2A /* My countdown */ = {
 			isa = PBXGroup;
 			children = (
-				1243DA6E24F95AF400AB8C2A /* My countdown.entitlements */,
 				1243DA5424F5640F00AB8C2A /* AppDelegate.swift */,
 				1243DA5624F5640F00AB8C2A /* SceneDelegate.swift */,
 				1243DA6824F5644C00AB8C2A /* TableViewController.swift */,
@@ -71,6 +70,7 @@
 				1243DA5D24F5641000AB8C2A /* Assets.xcassets */,
 				1243DA5F24F5641000AB8C2A /* LaunchScreen.storyboard */,
 				1243DA6224F5641000AB8C2A /* Info.plist */,
+				1243DA6E24F95AF400AB8C2A /* My countdown.entitlements */,
 			);
 			path = "My countdown";
 			sourceTree = "<group>";

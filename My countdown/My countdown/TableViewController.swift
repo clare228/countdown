@@ -21,10 +21,10 @@ class TableViewController: UITableViewController {
     
     var events: [Event] = []
     
-    @IBOutlet var eventsTableView: UITableView!
-    
     // today's date
     var currentDate = Date()
+    
+    @IBOutlet var eventsTableView: UITableView!
     
     // Add button function
     @IBAction func createEvent() {
@@ -58,7 +58,6 @@ class TableViewController: UITableViewController {
         
         // set background colour of table view
         self.tableView.backgroundColor = UIColor.init(displayP3Red: 234/255, green: 228/255, blue: 242/255, alpha: 1)
-        //self.tableView.backgroundColor = UIColor.white
         
         // add footer to hide separation lines of empty cells in table view
         self.tableView.tableFooterView = UIView()
