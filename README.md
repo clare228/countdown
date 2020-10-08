@@ -3,7 +3,10 @@
 - First iOS mobile app project
 - App to count down to an event
 
+# Progress:
+Completed
 
+# Others
 Main features
 - Create an event (title, description and time of event editable)
 - Event sorted according to days left till the event
@@ -30,6 +33,7 @@ What I wish I have done but couldn't due to the lack of a developer account
 
 Things I want to try in future project
 - Adding an extra tab on the table view (One tab for upcoming events and one for past events)
+- Learn how to send notifications
 
 
 Files:
