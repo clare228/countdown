@@ -2,6 +2,7 @@
 
 - First iOS mobile app project
 - App to count down to an event
+- Youtube video demonstrating functionality of the app: https://youtu.be/gJLDCQ1E1os
 
 # Progress
 Completed
